@@ -839,14 +839,17 @@ function onDeviceReady() {
 	
 	       var fb_success = function (data) {};
             var fb_fail = function (data) {};
-            facebookConnectPlugin.activateApp(fb_success, fb_fail);
-   /* console.log('window.cordova && window.cordova.plugins.keyboard=1=');
-    console.log(Keyboard);
-    if (typeof Keyboard.shrinkView!='undefined') {
-        Keyboard.shrinkView(true);
-        Keyboard.show();
-        console.log('window.cordova && window.cordova.plugins.keyboard=2=');
-    }*/
+    if(typeof facebookConnectPlugin !='undefined'){
+        facebookConnectPlugin.activateApp(fb_success, fb_fail);
+    }
+
+    /* console.log('window.cordova && window.cordova.plugins.keyboard=1=');
+     console.log(Keyboard);
+     if (typeof Keyboard.shrinkView!='undefined') {
+         Keyboard.shrinkView(true);
+         Keyboard.show();
+         console.log('window.cordova && window.cordova.plugins.keyboard=2=');
+     }*/
 
     goHome=0;
     /*document.addEventListener('keyboardDidHide', function (e) {
