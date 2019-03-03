@@ -834,15 +834,12 @@ function errorDB(tx, err) {
 function successDB() {
     console.log("success!");
 }
-console.log('beforeonDeviceReady')
+
 function onDeviceReady() {
-	console.log('afteronDeviceReady')
+	
 	       var fb_success = function (data) {};
             var fb_fail = function (data) {};
-            if(typeof facebookConnectPlugin !='undefined'){
-                facebookConnectPlugin.activateApp(fb_success, fb_fail);
-            }
-
+            facebookConnectPlugin.activateApp(fb_success, fb_fail);
    /* console.log('window.cordova && window.cordova.plugins.keyboard=1=');
     console.log(Keyboard);
     if (typeof Keyboard.shrinkView!='undefined') {
@@ -1008,33 +1005,25 @@ function onDeviceReady() {
             }
         });
     }*/
-    console.log('FCMPlugin');
-    console.log('window.FCMPlugin');
-    console.log(window.FCMPlugin);
-    console.log(FCMPlugin);
-    if ("FCMPlugin" in window) {
+    if ("FirebasePlugin" in window) {
         /*cordova.plugins.notification.local.schedule({
             title: 'title',
             text: 'body',
             action: 'my-orders.html',
             foreground: true
         });*/
-        //comment cordova.plugins.notification.local
-        /*if(typeof cordova.plugins.notification.local !='undefined'){
-            cordova.plugins.notification.local.on("click", function (notification, state) {
-                console.log('notification');
-                console.log(notification);
-                console.log('state');
-                console.log(state);
-                console.log(notification.id + " was clicked");
-                console.log(notification.action);
-                if(notification.action){
-                    window.location.href=notification.action;
-                }
-            }, this)
-        }*/
-
-        window.FCMPlugin.getToken(function(token) {
+        cordova.plugins.notification.local.on("click", function (notification, state) {
+            console.log('notification');
+            console.log(notification);
+            console.log('state');
+            console.log(state);
+            console.log(notification.id + " was clicked");
+            console.log(notification.action);
+            if(notification.action){
+                window.location.href=notification.action;
+            }
+        }, this)
+        window.FirebasePlugin.getToken(function(token) {
             // save this server-side and use it to push notifications to this device
             console.log('getToken');
             console.log(token);
@@ -1052,7 +1041,7 @@ function onDeviceReady() {
             console.log('getToken');
             console.error(error);
         });
-        window.FCMPlugin.onTokenRefresh(function(token) {
+        window.FirebasePlugin.onTokenRefresh(function(token) {
             // save this server-side and use it to push notifications to this device
             console.log('onTokenRefresh');
             console.log(token);
@@ -1070,29 +1059,25 @@ function onDeviceReady() {
             console.log('onTokenRefresh');
             console.error(error);
         });
-        window.FCMPlugin.onNotificationOpen(function(notificationData) {
+        window.FirebasePlugin.onNotificationOpen(function(notificationData) {
             console.log('notification');
             console.log(notificationData);
             /*var notification = new Notification("My title", {
                 tag: 'message1',
                 body: notificationData.body
             });*/
-            //comment cordova.plugins.notification.local
-            /*if(typeof cordova.plugins.notification.local !='undefined'){
-                cordova.plugins.notification.local.schedule({
-                    title: (notificationData.title)?notificationData.title:'custom title',
-                    text: (notificationData.body)?notificationData.body:'custom body',
-                    action: (notificationData.action)?notificationData.action:null,
-                    foreground: true
-                });
-            }*/
-
+            cordova.plugins.notification.local.schedule({
+                title: (notificationData.title)?notificationData.title:'custom title',
+                text: (notificationData.body)?notificationData.body:'custom body',
+                action: (notificationData.action)?notificationData.action:null,
+                foreground: true
+            });
            // notification.onclick = function() { console.log('click'); };
         }, function(error) {
             console.log('notification');
             console.error(error);
         });
-        window.FCMPlugin.hasPermission(function(data){
+        window.FirebasePlugin.hasPermission(function(data){
             console.log('hasPermission');
             console.log(data.isEnabled);
         });
@@ -1698,10 +1683,25 @@ function sendlatlong(lastLongitude,lastLatitude) {
         });
     }
 }
+function showAvailableLocationMessage(lastLongitude,lastLatitude,language){
+    $.ajax({
+        type: "GET",
+        url: makeURL('foreraa_users/locationAvailable'),
+        data: {"lastLongitude": lastLongitude, "lastLatitude": lastLatitude,"lang":language},
+        success: function (msg) {
+            if(msg.message){
+                $( ".page-cover" ).after('<div id="errorAvailableLocationMessage" style="margin-top: 10px;">'+msg.message+'</div>');
+            }
+
+        }
+    });
+
+}
 /*single parcel end code*/
  function onSuccess(position){
      var longitude = position.coords.longitude;
      var latitude = position.coords.latitude;
+     showAvailableLocationMessage(longitude,latitude,selectedLang);
      sendlatlong(longitude,latitude);
      setInterval(function(){
          console.log('send location')
