@@ -18,6 +18,9 @@
         4reraa‏ Team
     </author>
     <content src="index.html" />
+     <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
+    <preference name="SplashScreenDelay" value="10000" />
     <access origin="*" />
     <platform name="ios">
         <icon height="180" src="www/res/icon/ios/icon-60@3x.png" width="180" />
