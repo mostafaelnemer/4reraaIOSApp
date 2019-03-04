@@ -86,16 +86,13 @@
         <variable name="KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE" value="NO" />
     </plugin>
     <plugin name="cordova-plugin-x-socialsharing" spec="5.4.4" />
-    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="5.0.2">
-        <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="AIzaSyAQEddaDk0teVRCde15IqYQrrl0vMilKXo" />
-        <variable name="LOCATION_USAGE_DESCRIPTION" value="This app requires access to your location for navigation purposes" />
-    </plugin>
+    
     <plugin name="com-sarriaroman-photoviewer" spec="1.2.0" />
     <plugin name="cordova-plugin-request-location-accuracy" spec="2.2.3" />
     <plugin name="cordova-open-native-settings" spec="1.5.2" />
     <plugin name="cordova-plugin-x-toast" spec="2.7.2" />
     <plugin name="cordova-plugin-keyboard" spec="1.2.0" />
     <plugin name="cordova-plugin-fcm" spec="2.1.2" />
-    <plugin name="cordova-plugin-local-notification" spec="0.9.0-beta.2" />
+
     <engine name="ios" spec="^4.5.5" />
 </widget>
