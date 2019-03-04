@@ -87,7 +87,6 @@
         <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="AIzaSyAQEddaDk0teVRCde15IqYQrrl0vMilKXo" />
         <variable name="LOCATION_USAGE_DESCRIPTION" value="This app requires access to your location for navigation purposes" />
     </plugin>
-    <plugin name="com-sarriaroman-photoviewer" spec="1.2.0" />
     <plugin name="cordova-plugin-request-location-accuracy" spec="2.2.3" />
     <plugin name="cordova-open-native-settings" spec="1.5.2" />
     <plugin name="cordova-plugin-x-toast" spec="2.7.2" />
