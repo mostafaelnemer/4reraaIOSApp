@@ -1008,6 +1008,31 @@ function onDeviceReady() {
             }
         });
     }*/
+    push = PushNotification.init({ //init push service
+        android: {
+            senderID: "397826405411"
+        },
+
+        ios: {
+            senderID: "397826405411",
+            alert: true,
+            badge: true,
+            sound: true,
+            fcmSandbox: false
+        },
+
+        windows: {}
+    });
+    push.on('registration', function(data) {
+        var registrid = data.registrationId;
+        console.log('Token for pushes: '+ registrid);
+    });
+    push.on('notification', function (data) {
+        alert("Title:"+data.title+" Message:"+ data.message);
+    });
+    push.on('error', function (e) {
+        console.log(e.message)
+    });
     if ("FirebasePlugin" in window) {
         /*cordova.plugins.notification.local.schedule({
             title: 'title',

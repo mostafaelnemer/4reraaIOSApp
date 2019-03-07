@@ -55,6 +55,9 @@
         <splash src="www/res/screen/ios/Default@3x~universal~anycom.png" />
         <splash src="www/res/screen/ios/Default@3x~universal~comany.png" />
     </platform>
+    <platform name="ios">
+        <resource-file src="GoogleService-Info.plist" />
+    </platform>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
