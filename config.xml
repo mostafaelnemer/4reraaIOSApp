@@ -98,7 +98,8 @@
         <param name="SENDER_ID" value="397826405411" />
     </plugin>
     <plugin name="cordova-plugin-local-notification" spec="0.9.0-beta.2" />
-    <plugin name="Geolocation" value="CDVLocation" />
-    <plugin name="Notification" value="CDVNotification" />
+    <feature name="Geolocation">
+        <param name="ios-package" value="CDVLocation" />
+    </feature>
     <engine name="ios" spec="^4.0.1" />
 </widget>
