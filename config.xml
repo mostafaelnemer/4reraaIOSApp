@@ -94,7 +94,9 @@
     <plugin name="cordova-open-native-settings" spec="1.5.2" />
     <plugin name="cordova-plugin-x-toast" spec="2.7.2" />
     <plugin name="cordova-plugin-keyboard" spec="1.2.0" />
-    <plugin name="phonegap-plugin-push" spec="^2.2.3" />
+    <plugin name="phonegap-plugin-push" spec="1.5.3" source="npm">
+        <param name="SENDER_ID" value="397826405411" />
+    </plugin>
     <plugin name="cordova-plugin-local-notification" spec="0.9.0-beta.2" />
     <engine name="ios" spec="^4.0.1" />
 </widget>
