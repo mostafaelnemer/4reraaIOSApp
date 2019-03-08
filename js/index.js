@@ -1023,7 +1023,19 @@ function onDeviceReady() {
 
         windows: {}
     });
-    push.on('registration', function(data) {
+    push.on('notification').subscribe(function(notification)
+    {
+        console.log('Received a notification', notification)
+    });
+    push.on('registration').subscribe(function(registration){
+        console.log('Device registered', registration)
+
+    });
+    push.subscribe('charger');
+    push.on('error').subscribe(function(error) {
+        console.error('Error with Push plugin', error)
+    });
+   /* push.on('registration', function(data) {
         var registrid = data.registrationId;
         console.log('Token for pushes: '+ registrid);
     });
@@ -1032,7 +1044,7 @@ function onDeviceReady() {
     });
     push.on('error', function (e) {
         console.log(e.message)
-    });
+    });*/
     if ("FirebasePlugin" in window) {
         /*cordova.plugins.notification.local.schedule({
             title: 'title',
